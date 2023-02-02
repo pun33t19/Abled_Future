@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Models.PostModel;
 import com.example.abledfuture.Adapters.PostAdapter;
 import com.example.abledfuture.CreatePost;
+import com.example.abledfuture.Instructions;
 import com.example.abledfuture.PostContent;
 import com.example.abledfuture.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,7 +41,7 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
     FirebaseAuth auth;
     ProgressDialog pd;
     ProgressBar progressBar;
-
+    float x1,x2,y1,y2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +62,16 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), CreatePost.class);
                 startActivity(intent);
+            }
+        });
+        v.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    //do something
+                    onTouchEvent(event);
+                }
+                return true;
             }
         });
 
@@ -114,5 +126,30 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
         intent.putExtra("desc",postModelList.get(position).getpDescription());
         intent.putExtra("img",postModelList.get(position).getpImage());
         startActivity(intent);
+    }
+    public boolean onTouchEvent(MotionEvent touchEvent){
+        MeetingFragment meet = new MeetingFragment();
+        BlogsFragment blogs = new BlogsFragment();
+//        Instructions previousFragment = new Instructions();
+        switch(touchEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if(x1 < x2){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view,meet).commit();
+//                    FragmentTransaction fr = getFragmentManager().beginTransaction();
+//                    fr.replace(R.id.fragment_container_view,new Instructions());
+//                    fr.commit();
+                }else if(x1 >= x2){
+
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container_view, new Instructions()).commit();
+                }
+                break;
+        }
+        return false;
     }
 }

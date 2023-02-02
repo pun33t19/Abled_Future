@@ -12,6 +12,8 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 import com.example.abledfuture.databinding.ActivityMainBinding;
+import com.example.abledfuture.fragments.BlogsFragment;
+import com.example.abledfuture.fragments.LogInFragment;
 import com.example.abledfuture.fragments.MeetingFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-
+//        getSupportFragmentManager().beginTransaction().add(R.id.con,meet).commit();
     }
 
 //    @Override
@@ -44,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onTouchEvent(event);
 //    }
     public boolean onTouchEvent(MotionEvent touchEvent){
-        MeetingFragment fragment = new MeetingFragment();
+        MeetingFragment meet = new MeetingFragment();
+        BlogsFragment blogs = new BlogsFragment();
+        LogInFragment login = new LogInFragment();
 //        Instructions previousFragment = new Instructions();
         switch(touchEvent.getAction()){
             case MotionEvent.ACTION_DOWN:
@@ -54,15 +58,21 @@ public class MainActivity extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
+
                 if(x1 < x2){
-                        getSupportFragmentManager().beginTransaction().add(R.id.container,fragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view,meet).commit();
             }else if(x1 >= x2){
-                        getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view, login).commit();
             }
             break;
         }
         return false;
     }
 
+    @Override
+    public void onBackPressed() {
 
+        super.onBackPressed();
+        finishAffinity();
+    }
 }
