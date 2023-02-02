@@ -12,6 +12,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:id="@+id/lner_1"
         >
 
         <com.google.android.material.textview.MaterialTextView
@@ -40,6 +41,33 @@
 
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/lner_1"
+        android:layout_marginTop="30dp"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/hiring_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="New Hiring"
+            android:textColor="#D7191717"
+            android:textSize="22sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_job"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/hiring_text_1"
+            android:layout_marginTop="10dp"
+            tools:itemCount="7"
+            tools:listitem="@layout/job_tile" />
+
+    </RelativeLayout>
 
 
 
