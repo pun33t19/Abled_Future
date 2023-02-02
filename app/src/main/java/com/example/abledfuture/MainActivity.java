@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         anim.setRepeatCount(Animation.INFINITE);
         anim.setDuration(700);
 
+
+
        // binding.arrowSwipe.startAnimation(anim);
 
     }

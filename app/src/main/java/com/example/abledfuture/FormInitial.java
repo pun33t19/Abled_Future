@@ -145,7 +145,7 @@ public class FormInitial extends AppCompatActivity {
 //                                                Log.d("CreatePost", "onSuccess: uploaded"+hashMap);
 
                                                 // Starting Main Activity
-                                                startActivity(new Intent(FormInitial.this,Success.class));
+                                                startActivity(new Intent(FormInitial.this,MainActivity.class));
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

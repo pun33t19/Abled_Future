@@ -26,7 +26,7 @@ public class Authentication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),FormInitial.class));
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
         setContentView(R.layout.activity_authentication);
         binding = ActivityAuthenticationBinding.inflate(getLayoutInflater());
