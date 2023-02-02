@@ -65,13 +65,13 @@ public class MeetingFragment extends Fragment {
 //                JitsiMeetActivity.launch(getContext(),options);
 //            }
 //        });
-//
-//        /*binding.scheduleMeetBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getContext(), MeetActivity.class));
-//            }
-//        });*/
+
+        /*binding.scheduleMeetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MeetActivity.class));
+            }
+        });*/
 
     }
 

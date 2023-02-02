@@ -32,7 +32,7 @@ class AuthService(val auth: FirebaseAuth, val firestore:  FirebaseFirestore) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Register", "createUserWithEmail:success")
                     //  val user = auth.currentUser
-                    val intent = Intent(context, MainActivity::class.java)
+                    val intent = Intent(context, FormInitial::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
                     saveUserDetails(email,name,auth.currentUser!!.uid)
