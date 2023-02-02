@@ -17,6 +17,7 @@
 <!--        android:layout_marginTop="60dp"-->
 <!--        app:srcCompat="@drawable/upchevron" />-->
 
+
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView5"-->
 <!--        android:layout_width="108dp"-->
@@ -105,3 +106,15 @@
 
 
 </RelativeLayout>
+
+
+
+<!--    <self.philbrown.SwipeInterceptorView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:id="@+id/swipe_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" >-->
+
+<!--    </self.philbrown.SwipeInterceptorView>-->
+
+
+
