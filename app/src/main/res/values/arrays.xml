@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Gender_Array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="Disability_Array">
+        <item>Blind</item>
+        <item>Deaf</item>
+        <item>Spinal Cord Injury</item>
+        <item>Locomotor Disability</item>
+        <item>Mental illness</item>
+        <item>Multiple Sclerosis</item>
+        <item>Thalassemia</item>
+        <item>Low vision</item>
+        <item>Cerebral Palsy</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="Qualification_Array">
+        <item>Below 10th std</item>
+        <item>10th pass</item>
+        <item>12th pass</item>
+        <item>Bachelors</item>
+        <item>Masters</item>
+        <item>Diploma</item>
+    </string-array>
+
+    <string-array name="Skills_Array">
+        <item>Management</item>
+        <item>Painter</item>
+        <item>Musician</item>
+        <item>Clerk</item>
+        <item>Assistant</item>
+        <item>Developer</item>
+    </string-array>
+</resources>

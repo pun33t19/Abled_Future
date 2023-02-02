@@ -15,32 +15,12 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class JobViewModel : ViewModel() {
-
-   val jobInitial:MutableLiveData<JobInitialModel> =MutableLiveData()
-
-    fun fetch(){
-     //   val jobDataList:MutableList<JobDataModel> = mutableListOf()
+    val jobDataList:MutableLiveData<MutableList<JobDataModel>> = MutableLiveData()
 
 
-
-        viewModelScope.launch {
-            try {
-
-                jobInitial.value=JobApi.retroFitService.getMeals("India","1")
-                Log.d("Pizza_List","Pizza list retrieved successfully! "+jobInitial.value!!)
-                Log.d("List_Here ",jobInitial.value.toString())
-            }
-            catch (e: Exception){
-                Log.d("Exception","Exception occurred in fetching data "+e.message)
-            }
-
-
-
-        }
 
 
 
 
 
     }
-}
