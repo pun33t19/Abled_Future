@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "268316414627",
+    "project_id": "abledfuture",
+    "storage_bucket": "abledfuture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268316414627:android:4279d3d31f44e557cc2516",
+        "android_client_info": {
+          "package_name": "com.example.abledfuture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268316414627-o51udcnid1mnhj13t9ci7drfdq6r7b8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abledfuture",
+            "certificate_hash": "fac63e5e49dfc742a67121dfe1919f3dc132ef9c"
+          }
+        },
+        {
+          "client_id": "268316414627-s1bvlg8r534u6gutl0do8va1vef7d6o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACAEmhoWv75CWoUxniiKyfAt4bvWOiRmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268316414627-s1bvlg8r534u6gutl0do8va1vef7d6o1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
