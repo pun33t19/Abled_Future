@@ -13,9 +13,14 @@ import android.view.ViewGroup;
 
 import com.example.Models.MeetModel;
 import com.example.abledfuture.Adapters.MeetAdapter;
-import com.example.abledfuture.R;
 import com.example.abledfuture.databinding.FragmentMeetingBinding;
 
+import org.jitsi.meet.sdk.JitsiMeet;
+import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MeetingFragment extends Fragment {
@@ -38,6 +43,36 @@ public class MeetingFragment extends Fragment {
         MeetAdapter adapter = new MeetAdapter(list,binding.recyclerViewMeeting,getContext());
         binding.recyclerViewMeeting.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerViewMeeting.setAdapter(adapter);
+
+        URL server;
+        try{
+            server =new URL("https://meet.jit.si");
+            JitsiMeetConferenceOptions defaultOptions=
+                    new JitsiMeetConferenceOptions.Builder()
+                            .setServerURL(server)
+                            .setFeatureFlag("welcomepage.enabled", false).build();
+            JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        }
+        binding.scheduleMeetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+                        .setRoom("ksjijijsddk")
+                        .setFeatureFlag("welcomepage.enabled", false).build();
+                JitsiMeetActivity.launch(getContext(),options);
+            }
+        });
+
+        /*binding.scheduleMeetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MeetActivity.class));
+            }
+        });*/
+
     }
 
     FragmentMeetingBinding binding;
