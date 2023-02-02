@@ -48,7 +48,7 @@ public class LogInFragment extends Fragment {
                 if(emailText.isEmpty() || passwordText.isEmpty())
                     Toast.makeText(getContext(), "Please enter the empty fields", Toast.LENGTH_SHORT).show();
                 if(passwordText.length()<6)
-                    Toast.makeText(getContext(), "Password must be greater than 6 characters", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getContext(), "Password must be greater than 6 characters", Toast.LENGTH_SHORT).show();
                 AuthService authService=new AuthService(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance());
 
 
