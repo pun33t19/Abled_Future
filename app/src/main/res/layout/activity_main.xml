@@ -23,4 +23,5 @@
         android:name="com.example.abledfuture.fragments.HiringMainFragment"
          />
 
+
 </RelativeLayout>
