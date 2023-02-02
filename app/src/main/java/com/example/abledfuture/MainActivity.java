@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-//        getSupportFragmentManager().beginTransaction().add(R.id.con,meet).commit();
+
     }
 
 //    @Override
