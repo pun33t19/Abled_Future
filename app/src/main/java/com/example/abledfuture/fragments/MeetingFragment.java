@@ -2,65 +2,51 @@ package com.example.abledfuture.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.Models.MeetModel;
+import com.example.abledfuture.Adapters.MeetAdapter;
 import com.example.abledfuture.R;
+import com.example.abledfuture.databinding.FragmentMeetingBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MeetingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class MeetingFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public MeetingFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MeetingFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MeetingFragment newInstance(String param1, String param2) {
-        MeetingFragment fragment = new MeetingFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    ArrayList<MeetModel> list;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        list = new ArrayList<>();
+        list.add(new MeetModel("Content writing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sodales sem."));
+        list.add(new MeetModel("Seminar","Cras fermentum mi est, eu pellentesque elit pellentesque sit amet. "));
+        list.add(new MeetModel("Content writing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sodales sem."));
+        list.add(new MeetModel("Video Editing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sodales sem."));
+        list.add(new MeetModel("Content writing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget sodales sem."));
+        MeetAdapter adapter = new MeetAdapter(list,binding.recyclerViewMeeting,getContext());
+        binding.recyclerViewMeeting.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerViewMeeting.setAdapter(adapter);
     }
 
+    FragmentMeetingBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meeting, container, false);
+        binding = FragmentMeetingBinding.inflate(getLayoutInflater());
+
+
+        return binding.getRoot();
     }
 }
