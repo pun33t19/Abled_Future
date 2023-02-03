@@ -68,8 +68,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="64dp"
             android:layout_marginTop="6dp"
+            android:textStyle="bold"
             android:layout_marginBottom="3dp"
-            android:text="TextView" />
+            android:text="Swipe Left for \nMentorship" />
 
         <TextView
             android:id="@+id/textView2"
@@ -79,25 +80,29 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="61dp"
             android:layout_marginBottom="331dp"
-            android:text="TextView" />
+             android:textStyle="bold"
+
+            android:text="Swipe Right for \n      Jobs" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="167dp"
-            android:text="TextView" />
+            android:text="Swipe Up for Resume" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="131dp"
-            android:text="TextView" />
+            android:text="Swipe Down for Blogs"/>
     </RelativeLayout>
 
 </FrameLayout>
