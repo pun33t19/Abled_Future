@@ -1,76 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HiringMainFragment">
 
     <LinearLayout
+        android:id="@+id/lner_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:id="@+id/lner_1"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Hi, Morris!!"
-            android:textSize="28sp"
             android:textColor="@color/main_heading_text_color"
-            android:fontFamily="@font/poppins_semibold"/>
+            android:textSize="28sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/person_icon"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/black"
             android:layout_marginStart="150dp"
+            android:src="@drawable/person_icon"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="1dp"
 
             />
 
 
-
-
-
-
-
-
     </LinearLayout>
-    <RelativeLayout
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lner_1"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/lner_1"
-        android:layout_marginTop="30dp"
-        >
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/hiring_text_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="New Hiring"
-            android:textColor="#D7191717"
-            android:textSize="22sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_job"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/hiring_text_1"
-            android:layout_marginTop="10dp"
-            tools:itemCount="7"
-            tools:listitem="@layout/job_tile" />
-
-    </RelativeLayout>
-
-
-
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.abledfuture.ResumeBuilder
 import com.example.abledfuture.databinding.FragmentJobReqDetailBinding
 
 
@@ -39,6 +40,12 @@ class JobReqDetailFragment : Fragment() {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "*/*"
             startActivityForResult(intent,READ_REQUEST_CODE)
+        }
+
+        binding.createResume.setOnClickListener {
+            val intent=Intent(activity,ResumeBuilder::class.java)
+            startActivity(intent)
+
         }
 
 

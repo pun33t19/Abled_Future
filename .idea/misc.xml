@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/activity_form_initial.xml" value="0.25" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_hiring_main.xml" value="0.264" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_job_detail.xml" value="0.25" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_job_req_detail.xml" value="0.2" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_meetings.xml" value="0.2359375" />
+        <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/fragment_second.xml" value="0.25" />
         <entry key="..\:/Users/Puneet/AndroidStudioProjects/AbledFuture/app/src/main/res/layout/job_tile.xml" value="0.25" />
       </map>
     </option>
