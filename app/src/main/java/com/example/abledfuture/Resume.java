@@ -8,7 +8,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
@@ -30,8 +33,10 @@ import java.io.IOException;
 public class Resume extends AppCompatActivity {
      private TextView resume ;
      private Button pdf,main;
-    int pageHeight = 1120;
-    int pagewidth = 792;
+
+    Bitmap bmp,scaledbmp;
+    int pageHeight = 900;
+    int pagewidth = 702;
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int REQUEST_WRITE_STORAGE = 112;
     String e,s,t;
@@ -40,9 +45,12 @@ public class Resume extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume);
         resume = findViewById(R.id.resume);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.resume1);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 100, 100, false);
         String e = getIntent().getStringExtra("e");
         String s = getIntent().getStringExtra("s");
         String t = getIntent().getStringExtra("t");
+        resume.setText("\n\nExperience : "+e+"\n\n"+"Strengths : "+s+" \n\n"+"About Me : "+t);
 
 //        resume.setText(message);
         pdf = findViewById(R.id.pdf);
@@ -58,16 +66,16 @@ public class Resume extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                    generatePDF(e,s,t);
-
-
 
             }
         });
 
 
+
     }
+
+
     private void generatePDF(String e, String s, String t) {
         // creating an object variable
         // for our PDF document.
@@ -99,7 +107,7 @@ public class Resume extends AppCompatActivity {
         // second parameter is position from left
         // third parameter is position from top and last
         // one is our variable for paint.
-//        canvas.drawBitmap(scaledbmp, 56, 40, paint);
+        canvas.drawBitmap(scaledbmp, 300, 60, paint);
 
         // below line is used for adding typeface for
         // our text which we will be adding in our PDF file.
@@ -117,9 +125,16 @@ public class Resume extends AppCompatActivity {
         // the first parameter is our text, second parameter
         // is position from start, third parameter is position from top
         // and then we are passing our variable of paint which is title.
-        canvas.drawText("My Resume :"+e, 209, 100, title);
-        canvas.drawText("Experience :"+e, 209, 300, title);
-        canvas.drawText("Strengths :"+s, 209, 500, title);
+//        canvas.drawText("My Resume :", 209, 100, title);
+
+
+//        Typeface bold = Typeface.create(plain, Typeface.DEFAULT_BOLD);
+
+        canvas.drawText("Name : Umang Singh", 209, 200, title);
+        canvas.drawText("Age : 20", 209, 300, title);
+        canvas.drawText("SKills :"+e, 209, 400, title);
+        canvas.drawText("Experience :"+e, 209, 500, title);
+        canvas.drawText("Strengths :"+s, 209, 600, title);
         canvas.drawText("About Me :"+t, 209, 700, title);
 //        canvas.drawText("Geeks for Geeks", 209, 80, title);
 
@@ -140,7 +155,7 @@ public class Resume extends AppCompatActivity {
 
         // below line is used to set the name of
         // our PDF file and its path.
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "GFG.pdf");
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "MyResume.pdf");
         Log.d("TEST",Environment.getExternalStorageDirectory().toString());
 
         try {

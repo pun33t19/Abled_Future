@@ -10,11 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Instructions#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Instructions extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
