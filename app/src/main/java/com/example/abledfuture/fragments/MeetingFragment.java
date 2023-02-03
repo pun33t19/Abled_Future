@@ -83,6 +83,7 @@ public class MeetingFragment extends Fragment {
         binding = FragmentMeetingBinding.inflate(getLayoutInflater());
 
 
+
         return binding.getRoot();
     }
 }

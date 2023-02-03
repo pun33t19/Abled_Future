@@ -1,4 +1,5 @@
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,11 +33,18 @@ class JobHiringAdapter(private val myDataset: MutableList<JobDataModel>,val cont
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             holder.bind(myDataset[position])
         holder.itemView.setOnClickListener {
+
+            val fragment=JobDetailFragment()
+            val bundle=Bundle()
+
+            bundle.putInt("position",position)
+            fragment.arguments=bundle
+
             val fragmentManager = (context as AppCompatActivity).supportFragmentManager
             fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_view, JobDetailFragment::class.java, null)
+                .replace(R.id.fragment_container_view, fragment , "TAG")
                 .setReorderingAllowed(true)
-                .addToBackStack("name") // name can be null
+                .addToBackStack("name")
                 .commit()
         }
     }
