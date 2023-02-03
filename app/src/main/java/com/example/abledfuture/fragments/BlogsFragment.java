@@ -39,7 +39,7 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
     PostAdapter postAdapter;
     List<PostModel> postModelList;
     FirebaseAuth auth;
-    ProgressDialog pd;
+//    ProgressDialog pd;
     ProgressBar progressBar;
     float x1,x2,y1,y2;
 
@@ -49,7 +49,7 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_blogs, container, false);
 
-//        progressBar = v.findViewById(R.id.progressBar_blog);
+        progressBar = v.findViewById(R.id.progressBar_blog);
 
 //        Intent intent = new Intent(getActivity(), PostContent.class);
 //        startActivity(intent);
