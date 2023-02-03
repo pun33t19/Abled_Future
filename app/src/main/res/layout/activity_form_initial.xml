@@ -129,13 +129,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="DOB">
+                android:hint="Age">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dob"
+                    android:id="@+id/age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="number"
                     />
 
 
