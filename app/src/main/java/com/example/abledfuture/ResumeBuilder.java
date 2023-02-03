@@ -61,7 +61,9 @@ public class ResumeBuilder extends AppCompatActivity {
             public void onBufferReceived(byte[] buffer) { }
 
             @Override
-            public void onEndOfSpeech() { }
+            public void onEndOfSpeech() {
+                speechRecognizer.stopListening();
+            }
 
             @Override
             public void onError(int error) { }
@@ -105,12 +107,7 @@ public class ResumeBuilder extends AppCompatActivity {
             // Start recording
 
            startListening();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    speechRecognizer.stopListening();
-                }
-            }, 15000);
+
         }
 
 
@@ -134,6 +131,7 @@ public class ResumeBuilder extends AppCompatActivity {
             String resume = "EXPERIENCE\n" + e + "\n\n" +
                     "STRENGTHS\n" + s + "\n\n" +
                     "ABOUT\n" + t;
+
            i.putExtra("e",e);
             i.putExtra("s",s);
             i.putExtra("t",t);
@@ -155,7 +153,7 @@ public class ResumeBuilder extends AppCompatActivity {
     private void processResult(List<String> results) {
         // Store the input for the current field
         String fieldInput = results.get(0);
-//        speak("You said " + fieldInput);
+        speak("You said " + fieldInput);
 //          fields[currentField].setText(fieldInput);
 //
         Log.d("TEST",currentField+" "+fieldInput);
@@ -193,7 +191,12 @@ public class ResumeBuilder extends AppCompatActivity {
         }
         super.onDestroy();
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this,MainActivity.class));
 
+    }
 
 
 }

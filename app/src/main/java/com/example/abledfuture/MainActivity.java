@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.content.Intent;
 import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private SpeechRecognizer speechRecognizer;
     FragmentContainerView fr ;
     private TextToSpeech tts;
+    private String a = "hello world";
+    private static boolean flag = false;
     ImageView fragImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
 
+
+
+//         speak("HElo world");
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
@@ -103,17 +109,28 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public void onEvent(int eventType, Bundle params) { }
         });
+//        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+//            @Override
+//            public void onInit(int status) {
+//                    int result = tts.setLanguage(Locale.US);
+//                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+//                        Log.e("TTS", "Language not supported");
+//                    }
+//            }
+//        });
+//      speak();
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+
             @Override
-            public void onInit(int status) {
-                    int result = tts.setLanguage(Locale.US);
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "Language not supported");
-                    }
+            public void onInit(int arg0) {
+                if(arg0 == TextToSpeech.SUCCESS)
+                {
+                    tts.setLanguage(Locale.US);
+                    speak("Swipe up for Profile, Swipe down for Blogs, Swipe Left for Mentorship, Swipe Right for Job opportunities");
+                }
             }
         });
-//      speak();
-
+        speak(a);
 
     }
     private void speak(String text) {
@@ -152,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 replaceFragment(new BlogsFragment());
             } else {
                 // Swipe up
-                replaceFragment(new JobDetailFragment());
+                startActivity(new Intent(getApplicationContext(),ResumeBuilder.class));
             }
         }
         return true;
@@ -192,16 +209,42 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public void onLongPress(MotionEvent e) {
 
     }
+//    @Override
+//    protected void onDestroy() {
+////        if (speechRecognizer != null) {
+////            speechRecognizer.destroy();
+////        }
+////        if (tts != null) {
+////            tts.stop();
+////            tts.shutdown();
+////        }
+////        super.onDestroy();
+////    }
+
+
+
+
     @Override
-    protected void onDestroy() {
-        if (speechRecognizer != null) {
-            speechRecognizer.destroy();
-        }
-        if (tts != null) {
-            tts.stop();
-            tts.shutdown();
-        }
-        super.onDestroy();
+    protected void onResume() {
+        super.onResume();
+        Log.i("MainAcivitry","Flag value: "+flag);
+         if(flag)
+         {
+             tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+
+                 @Override
+                 public void onInit(int arg0) {
+                     if(arg0 == TextToSpeech.SUCCESS)
+                     {
+                         tts.setLanguage(Locale.US);
+                         speak("You are back in Main Activity");
+                     }
+                 }
+             });
+         }
+         flag = true;
+
+
     }
 
 

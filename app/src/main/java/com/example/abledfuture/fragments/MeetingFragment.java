@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,12 +30,14 @@ import com.example.abledfuture.databinding.FragmentMeetingBinding;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MeetingFragment extends Fragment {
 
     public MeetingFragment() {
         // Required empty public constructor
     }
+    private TextToSpeech tts;
     float x1,x2,y1,y2;
     ArrayList<MeetModel> list;
     @Override
@@ -118,9 +121,20 @@ public class MeetingFragment extends Fragment {
                 return true;
             }
         });
+        tts = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
 
+            @Override
+            public void onInit(int arg0) {
+                if(arg0 == TextToSpeech.SUCCESS)
+                {
+                    tts.setLanguage(Locale.US);
+                    speak("You have entered the Mentorship Area");
+                }
+            }
+        });
         return binding.getRoot();
     }
+
     public boolean onTouchEvent(MotionEvent touchEvent){
         MeetingFragment meet = new MeetingFragment();
         BlogsFragment blogs = new BlogsFragment();
@@ -145,5 +159,9 @@ public class MeetingFragment extends Fragment {
                 break;
         }
         return false;
+    }
+
+    private void speak(String text) {
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
     }
 }

@@ -3,6 +3,7 @@ package com.example.abledfuture.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class BlogsFragment extends Fragment implements PostAdapter.onClickListner {
 
@@ -42,6 +44,7 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
     ProgressDialog pd;
     ProgressBar progressBar;
     float x1,x2,y1,y2;
+    private TextToSpeech tts;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +58,17 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
 //        startActivity(intent);
 
         createPost = (FloatingActionButton) v.findViewById(R.id.createBlog);
+        tts = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
 
+            @Override
+            public void onInit(int arg0) {
+                if(arg0 == TextToSpeech.SUCCESS)
+                {
+                    tts.setLanguage(Locale.US);
+                    speak("You have entered the Blogs Area");
+                }
+            }
+        });
 
         createPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +90,9 @@ public class BlogsFragment extends Fragment implements PostAdapter.onClickListne
 
         return v;
     }
-
+    private void speak(String text) {
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
     private void loadPosts() {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
