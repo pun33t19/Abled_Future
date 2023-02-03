@@ -65,7 +65,7 @@ dependencies {
 
 
 
-    //implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
+    implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
 
 //    implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
 
