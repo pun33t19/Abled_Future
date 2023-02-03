@@ -53,7 +53,7 @@ public class FormInitial extends AppCompatActivity {
     private static final int CAMERA_IMAGE_CODE = 200;
 //    ProgressDialog pd;
     FirebaseAuth auth;
-    TextInputEditText name,aadhar;
+    TextInputEditText name,aadhar,age;
     AutoCompleteTextView gender,qualification,Disability,skills;
     Button submit,createResume,upload;
 
@@ -92,6 +92,7 @@ public class FormInitial extends AppCompatActivity {
         String curQualification = qualification.getText().toString();
         String curDisability = Disability.getText().toString();
         String curSkills = skills.getText().toString();
+        String curage = age.getText().toString();
 
         final String timestamp = String.valueOf(System.currentTimeMillis());
 
@@ -122,16 +123,19 @@ public class FormInitial extends AppCompatActivity {
 
                                 HashMap<String , Object> hashMap = new HashMap<>();
 
+                                hashMap.put("aadhar",curAadhar);
+                                hashMap.put("disability",curDisability);
+                                hashMap.put("gender",curGender);
+                                hashMap.put("profile_img_link",downloadUrl);
+                                hashMap.put("name",curName);
+                                hashMap.put("studied",curQualification);
+                                hashMap.put("skills",curSkills);
+                                hashMap.put("time",timestamp);
+                                hashMap.put("email",user.getEmail());
                                 hashMap.put("uid",user.getUid());
-                                hashMap.put("uEmail",user.getEmail());
-                                hashMap.put("pName",curName);
-                                hashMap.put("pImage",downloadUrl);
-                                hashMap.put("pAadhar",curAadhar);
-                                hashMap.put("pTime",timestamp);
-                                hashMap.put("pGender",curGender);
-                                hashMap.put("pQualification",curQualification);
-                                hashMap.put("pDisability",curDisability);
-                                hashMap.put("pSkills",curSkills);
+                                hashMap.put("age",curage);
+                                hashMap.put("location","Bandra");
+
                                 // Putting data in firebase
 
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("UserInfo");
@@ -176,6 +180,7 @@ public class FormInitial extends AppCompatActivity {
         submit=findViewById(R.id.submit);
         upload=findViewById(R.id.upload);
         createResume=findViewById(R.id.createResume);
+        age=findViewById(R.id.age);
         auth = FirebaseAuth.getInstance();
     }
 
