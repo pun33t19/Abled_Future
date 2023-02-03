@@ -21,6 +21,7 @@
         <activity
 
             android:name=".Resume"
+
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
